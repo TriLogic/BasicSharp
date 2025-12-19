@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BasicSharp.Test/BasicSharp.Test.csproj" Id="ae179b8b-ce80-4092-a728-4df2eb66eeea" />
+  <Project Path="BasicSharp/BasicSharp.csproj" />
+</Solution>

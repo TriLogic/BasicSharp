@@ -8,7 +8,9 @@ namespace BasicSharp.Test
     {
         static void Main(string[] args)
         {
-            foreach (string file in Directory.GetFiles(Path.Combine(Environment.CurrentDirectory, "Tests"), "*.bas"))
+            var WorkingDir = GetWorkingDir();
+
+            foreach (string file in Directory.GetFiles(WorkingDir, "*.bas"))
             {
                 Interpreter basic = new Interpreter(File.ReadAllText(file));
                 basic.printHandler += Console.WriteLine;
@@ -26,6 +28,18 @@ namespace BasicSharp.Test
                 Console.WriteLine("OK");
             }
             Console.Read();
+        }
+
+        static string GetWorkingDir()
+        {
+            var exeDir = AppContext.BaseDirectory;
+
+            var solutionDir = Path.GetFullPath(
+                Path.Combine(exeDir, "..", "..", "..")
+            );
+
+            var testDir = Path.Combine(solutionDir, "Tests");
+            return testDir;
         }
     }
 }
